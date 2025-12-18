@@ -10,7 +10,15 @@ const authRoutes = require("./routes/authRoutes");
 const app = express();
 
 // middleware
-app.use(cors());
+app.use(cors(
+    {
+        origin:"http://16.170.237.253:3000",
+        credentials:true
+    }
+));
+app.use(express.json());
+app.use("/api/products", productRoutes);
+app.use("/api/cart", cartRoutes);
 app.use(express.json());
 app.use("/api/products", productRoutes);
 app.use("/api/cart", cartRoutes);
